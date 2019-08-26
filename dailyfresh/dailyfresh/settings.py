@@ -83,7 +83,8 @@ WSGI_APPLICATION = 'dailyfresh.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'dailyfresh',
+        # 'NAME': 'dailyfresh',
+        'NAME': 'ttsx_test',  # 测试用的数据库
         'USER': 'root',
         'PASSWORD': '123',
         'HOST': '192.168.177.128',
@@ -121,3 +122,31 @@ TINYMCE_DEFAULT_CONFIG = {
 
 # django认证系统使用的模型类
 AUTH_USER_MODEL = 'user.User'  # 不指定无法迁移
+
+# 发送邮箱的配置
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# smpt服务地址
+EMAIL_HOST = 'smtp.qq.com'
+# smpt服务对应端口
+EMAIL_PORT = 25
+# 发送邮件的邮箱
+EMAIL_HOST_USER = '1102234236@qq.com'
+# smtp客户端授权密码
+EMAIL_HOST_PASSWORD = 'arkegcxmkjldhgie'
+# 收件人看到的发件人
+EMAIL_FROM = '天天生鲜<1102234236@qq.com>'
+
+# django缓存配置
+CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': 'redis://192.168.177.128:6379/9',
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+        }
+    }
+}
+
+# 配置session信息
+SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
+SESSION_CACHE_ALIAS = 'default'

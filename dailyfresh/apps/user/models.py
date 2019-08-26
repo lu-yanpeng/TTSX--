@@ -6,7 +6,7 @@ from db.base_model import BaseModel
 
 class User(AbstractUser, BaseModel):
     '''用户模型类'''
-
+    # 继承了django内置的用户类,会自动创建一张用户表,包含多个用户信息
     class Meta:
         db_table = 'df_user'
         verbose_name = '用户'
