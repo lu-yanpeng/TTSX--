@@ -16,7 +16,7 @@ app = Celery('celery_tasks.tasks', broker='redis://192.168.177.128:6379/8')
 # 发送激活邮件
 @app.task
 def send_register_active_email(to_email, username, token):
-    subject = '天天生鲜欢迎信息'  # 邮件正文
+    subject = '天天生鲜欢迎信息'  # 邮件标题
     message = ''  # 邮件正文,如果包含html内容就不能放在这里发送,否则会直接发送字符串
     sender = settings.EMAIL_FROM  # 发件人邮箱
     receiver = [to_email]  # 收件人,可以同时发给多人
