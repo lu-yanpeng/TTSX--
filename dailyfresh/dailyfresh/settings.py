@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 
+# 设置绝对路径时用到
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -113,7 +114,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
-# 富文本编辑器配置
+# 富文本编辑器配置/这里用的是2.4.0版本,其他版本报错
 TINYMCE_DEFAULT_CONFIG = {
     'theme': 'advanced',
     'width': 600,
@@ -153,3 +154,12 @@ SESSION_CACHE_ALIAS = 'default'
 
 # 配置登录的url地址
 LOGIN_URL = '/user/login'
+
+# 修改默认上传类,默认是FileSystemStorage
+DEFAULT_FILE_STORAGE = 'utils.fdfs.storage.FDFSStorage'
+
+# 设置客户端配置文件的路径,变量名可以自定义
+FDFS_CLIENT_CONF = './utils/fdfs/client.conf'
+
+# 设置fdfs的IP地址,变量名可以自定义
+FDFS_URL = 'http://192.168.177.128:8888/'

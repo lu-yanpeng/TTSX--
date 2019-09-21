@@ -1,6 +1,6 @@
 from django.conf.urls import url
-from . import views
+from .views import *
 
 urlpatterns = [
-    url(r'^$', views.index, name='index'),
+    url(r'^index$', IndexView.as_view(), name='index'),  # 访问django的首页
 ]

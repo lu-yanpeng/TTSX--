@@ -1,4 +1,4 @@
-{# 首页 注册 登录 #}
+{# 首页静态文件: celery_tasks.tasks.generate_static_index_html #}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 {% load staticfiles %}
@@ -18,20 +18,11 @@
 		<div class="header">
 			<div class="welcome fl">欢迎来到天天生鲜!</div>
 			<div class="fr">
-                {# 在模板文件中不管是参数还是方法,都不需要加括号,可以直接调用 #}
-                {% if user.is_authenticated %}
-                    <div class="login_btn fl">
-                        欢迎您：<em>{{ user.username }}</em>
-{#                        <span>|</span>#}
-{#                        <a href="register.html">退出</a>#}
-                    </div>
-                {% else %}
-                    <div class="login_btn fl">
-                        <a href="{% url 'user:login' %}">登录</a>
-                        <span>|</span>
-                        <a href="{% url 'user:register' %}">注册</a>
-                    </div>
-                {% endif %}
+                <div class="login_btn fl">
+                    <a href="{% url 'user:login' %}">登录</a>
+                    <span>|</span>
+                    <a href="{% url 'user:register' %}">注册</a>
+                </div>
 				<div class="user_link fl">
 					<span>|</span>
 					<a href="{% url 'user:user' %}">用户中心</a>
@@ -39,13 +30,9 @@
 					<a href="cart.html">我的购物车</a>
 					<span>|</span>
 					<a href="{% url 'user:order' %}">我的订单</a>
-                    {% if user.is_authenticated %}
-                        <span>|</span>
-                        <a href="{% url 'user:logout' %}">退出登录</a>
-                    {% endif %}
 				</div>
 			</div>
-		</div>		
+		</div>
 	</div>
 {% endblock header_con %}
 
@@ -75,7 +62,7 @@
 			<span>|</span>
 			<a href="#">招聘人才</a>
 			<span>|</span>
-			<a href="#">友情链接</a>		
+			<a href="#">友情链接</a>
 		</div>
 		<p>CopyRight © 2016 北京天天生鲜信息技术有限公司 All Rights Reserved</p>
 		<p>电话：010-****888    京ICP备*******8号</p>
